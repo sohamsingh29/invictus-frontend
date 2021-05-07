@@ -35,3 +35,13 @@
 ## libraries used
 
 - chakra-ui for frontend ui components
+
+## Screenshots
+
+### Decode
+
+<img src="./decode.png" />
+
+### Encode
+
+<img src="./encode.png"/>
