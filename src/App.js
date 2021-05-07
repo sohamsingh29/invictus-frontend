@@ -1,23 +1,28 @@
 import React, { useState } from "react";
-import { Box, Button, Container, Heading, Input } from "@chakra-ui/react";
+import { Box, Button, Container, Heading, Input, Text } from "@chakra-ui/react";
 function App() {
   const [eInput, setEInput] = useState("");
   const [dInput, setDInput] = useState("");
-
-  const handleEncode = () => {
-    fetch(`/encode/${eInput}`)
+  const [result, setResult] = useState("");
+  const handleEncode = (e) => {
+    e.preventDefault();
+    fetch(`https://invictus-backend.vercel.app/api/encode/${eInput}`)
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => setResult(data.encoded));
   };
-  const handleDecode = () => {
-    fetch("/decode/" + dInput)
+  const handleDecode = (e) => {
+    e.preventDefault();
+    fetch("https://invictus-backend.vercel.app/api/decode/" + dInput)
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => setResult(data.decoded));
   };
   return (
     <Container centerContent>
       <Box marginY="10" width="xl" rounded="md" shadow="xl" p="10">
-        <Heading my="5">Encode / Decode your String</Heading>
+        {result.length > 0 && <Text> Encode/decode your string</Text>}
+        <Heading my="5">
+          {result.length ? "Answer : " + result : "Encode / Decode your String"}
+        </Heading>
         <form onSubmit={handleEncode}>
           <Input
             value={eInput}
