@@ -8,13 +8,13 @@ function App() {
     e.preventDefault();
     fetch(`https://invictus-backend.vercel.app/api/encode/${eInput}`)
       .then((res) => res.json())
-      .then((data) => setResult(data.encoded));
+      .then((data) => setResult(data.encoded), setEInput(""));
   };
   const handleDecode = (e) => {
     e.preventDefault();
     fetch("https://invictus-backend.vercel.app/api/decode/" + dInput)
       .then((res) => res.json())
-      .then((data) => setResult(data.decoded));
+      .then((data) => setResult(data.decoded), setDInput(""));
   };
   return (
     <Container centerContent>
