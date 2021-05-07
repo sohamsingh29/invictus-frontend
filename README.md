@@ -45,3 +45,8 @@
 ### Encode
 
 <img src="./encode.png"/>
+
+### Usage Link
+
+- [API](https://invictus-backend.vercel.app/api)
+- [APP](https://invictus-frontend.vercel.app/api)
